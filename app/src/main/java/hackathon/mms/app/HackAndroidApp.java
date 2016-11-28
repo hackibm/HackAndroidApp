@@ -15,7 +15,7 @@ public class HackAndroidApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        repository = new DistrictOfficesRepository();
+    //    repository = new DistrictOfficesRepository();
     }
 
     public DistrictOfficesRepository getRepository() {
