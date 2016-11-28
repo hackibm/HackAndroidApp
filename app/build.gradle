@@ -16,6 +16,8 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+
     }
 
     compileOptions {
@@ -45,6 +47,8 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:24.2.1'
 
     compile 'com.google.code.gson:gson:2.6.1'
+    compile 'com.android.support:multidex:1.0.1'
+
 
     //retrofit
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
@@ -66,4 +70,6 @@ dependencies {
 
     //react-native
     compile 'com.facebook.react:react-native:+'
+
+    compile 'com.google.android.gms:play-services:9.0.1'
 }
