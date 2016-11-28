@@ -71,7 +71,7 @@ public class DistrictOfficeListUnitTest {
 
         //then
         verify(repository).getDistrictOffices();
-        Assert.assertNotNull(presenter.getOfficeList(null));
+        Assert.assertNotNull(presenter.getOfficeList(userLocation));
     }
 
     @Test
