@@ -6,6 +6,7 @@ import com.google.gson.GsonBuilder;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import hackathon.mms.app.infrastructure.graphql.DataModel;
 import hackathon.mms.app.model.DistrictOffice;
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
@@ -45,8 +46,12 @@ public class DistrictOfficesRepository {
 
     public Observable<DistrictOffice> getDistrictOffices(){
 
-        Observable<List<DistrictOffice>> observable = repositoryService.getDistrictOffices();
-        return observable.flatMap(Observable::from); //.map(CommentConverter::fromCommentTO);
+        String query = "query { offices {id name } }";
+
+        Observable<DataModel<List<DistrictOffice>>> observable = repositoryService.getDistrictOffices( query);
+
+    //    observable.
+        return observable.flatMap(dataModel -> Observable.from(dataModel.getData()));
     }
 
 }

@@ -5,5 +5,5 @@ package hackathon.mms.app.repository;
  */
 
 public class UriBuilder {
-    public static final String BASE_REPOSIOTRY_URI = "http://hacknodeserver.mybluemix.net/";
+    public static final String BASE_REPOSIOTRY_URI = "http://hacknodeserver.mybluemix.net";
 }
