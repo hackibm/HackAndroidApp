@@ -1,16 +1,14 @@
-package hackathon.mms.app.officeList;
+package hackathon.mms.app.domain.officeList;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
-import hackathon.mms.app.model.DistrictOffice;
-import hackathon.mms.app.model.UserLocation;
-import hackathon.mms.app.officeList.DistrictOfficeListContract.DistrictOfficeListView;
-import hackathon.mms.app.repository.DistrictOfficesRepository;
+import hackathon.mms.app.shared.model.DistrictOffice;
+import hackathon.mms.app.shared.model.UserLocation;
+import hackathon.mms.app.domain.officeList.DistrictOfficeListContract.DistrictOfficeListView;
+import hackathon.mms.app.infrastructure.repository.GraphQLRepository;
 import rx.Observable;
-import rx.Scheduler;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -22,10 +20,10 @@ public class DistrictOfficeListPresenterImpl implements DistrictOfficeListContra
     private WeakReference<DistrictOfficeListView> districtOfficeListViewRef;
     private List<DistrictOffice> districtOffices;
 
-    private DistrictOfficesRepository repository;
+    private GraphQLRepository repository;
 
     public DistrictOfficeListPresenterImpl(DistrictOfficeListView districtOfficeListView,
-                                           DistrictOfficesRepository repository) {
+                                           GraphQLRepository repository) {
         districtOfficeListViewRef = new WeakReference<>(districtOfficeListView);
         districtOffices = new ArrayList<>();
         this.repository = repository;

@@ -9,10 +9,10 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:name=".HackAndroidApp"
+        android:name=".shared.model.HackAndroidApp"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="hackathon.mms.app.officeList.DistrictOfficeListActivity">
+        <activity android:name="hackathon.mms.app.domain.officeList.DistrictOfficeListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

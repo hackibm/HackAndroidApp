@@ -1,4 +1,4 @@
-package hackathon.mms.app.officeList;
+package hackathon.mms.app.domain.officeList;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,9 +9,9 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import hackathon.mms.app.officeList.DistrictOfficeListFragment.OnDistrictOfficeSelectedListener;
+import hackathon.mms.app.domain.officeList.DistrictOfficeListFragment.OnDistrictOfficeSelectedListener;
 import hackathon.mms.app.R;
-import hackathon.mms.app.model.DistrictOffice;
+import hackathon.mms.app.shared.model.DistrictOffice;
 
 
 public class DistrictOfficeRecyclerViewAdapter extends RecyclerView.Adapter<DistrictOfficeRecyclerViewAdapter.ViewHolder> {

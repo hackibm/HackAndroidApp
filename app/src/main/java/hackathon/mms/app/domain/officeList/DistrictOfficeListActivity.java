@@ -1,11 +1,11 @@
-package hackathon.mms.app.officeList;
+package hackathon.mms.app.domain.officeList;
 
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import hackathon.mms.app.R;
-import hackathon.mms.app.model.DistrictOffice;
+import hackathon.mms.app.shared.model.DistrictOffice;
 
 public class DistrictOfficeListActivity extends AppCompatActivity
         implements DistrictOfficeListFragment.OnDistrictOfficeSelectedListener {

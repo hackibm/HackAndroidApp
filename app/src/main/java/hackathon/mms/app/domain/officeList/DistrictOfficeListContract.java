@@ -1,9 +1,9 @@
-package hackathon.mms.app.officeList;
+package hackathon.mms.app.domain.officeList;
 
 import java.util.List;
 
-import hackathon.mms.app.model.DistrictOffice;
-import hackathon.mms.app.model.UserLocation;
+import hackathon.mms.app.shared.model.DistrictOffice;
+import hackathon.mms.app.shared.model.UserLocation;
 
 /**
  * Created by ewa on 28.11.2016.

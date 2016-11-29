@@ -1,4 +1,4 @@
-package hackathon.mms.app.officeList;
+package hackathon.mms.app.domain.officeList;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,10 +11,10 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-import hackathon.mms.app.HackAndroidApp;
+import hackathon.mms.app.shared.model.HackAndroidApp;
 import hackathon.mms.app.R;
-import hackathon.mms.app.model.DistrictOffice;
-import hackathon.mms.app.repository.DistrictOfficesRepository;
+import hackathon.mms.app.shared.model.DistrictOffice;
+import hackathon.mms.app.infrastructure.repository.GraphQLRepository;
 
 
 public class DistrictOfficeListFragment extends Fragment implements DistrictOfficeListContract.DistrictOfficeListView {
@@ -36,7 +36,7 @@ public class DistrictOfficeListFragment extends Fragment implements DistrictOffi
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        DistrictOfficesRepository repository = ((HackAndroidApp)getActivity()
+        GraphQLRepository repository = ((HackAndroidApp)getActivity()
                 .getApplication())
                 .getRepository();
 

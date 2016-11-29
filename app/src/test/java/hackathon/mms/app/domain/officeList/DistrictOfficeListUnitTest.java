@@ -1,4 +1,4 @@
-package hackathon.mms.app.officeList;
+package hackathon.mms.app.domain.officeList;
 
 import junit.framework.Assert;
 
@@ -6,7 +6,6 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.mockito.Mock;
-import org.mockito.internal.matchers.Any;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
@@ -14,9 +13,9 @@ import org.mockito.junit.MockitoRule;
 import java.util.ArrayList;
 import java.util.List;
 
-import hackathon.mms.app.model.DistrictOffice;
-import hackathon.mms.app.model.UserLocation;
-import hackathon.mms.app.repository.DistrictOfficesRepository;
+import hackathon.mms.app.shared.model.DistrictOffice;
+import hackathon.mms.app.shared.model.UserLocation;
+import hackathon.mms.app.infrastructure.repository.GraphQLRepository;
 import rx.Observable;
 
 import static org.junit.Assert.assertEquals;
@@ -40,7 +39,7 @@ public class DistrictOfficeListUnitTest {
     UserLocation userLocation;
 
     @Mock
-    DistrictOfficesRepository repository;
+    GraphQLRepository repository;
 
     @Rule
     public MockitoRule mockitoRule = MockitoJUnit.rule();

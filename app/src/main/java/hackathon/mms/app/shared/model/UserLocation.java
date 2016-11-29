@@ -1,4 +1,4 @@
-package hackathon.mms.app.model;
+package hackathon.mms.app.shared.model;
 
 /**
  * Created by ewa on 28.11.2016.

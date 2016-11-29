@@ -1,4 +1,4 @@
-package hackathon.mms.app.repository;
+package hackathon.mms.app.infrastructure.repository;
 
 /**
  * Created by EKolodziejska on 2016-11-28.

@@ -1,4 +1,4 @@
-package hackathon.mms.app.repository;
+package hackathon.mms.app.infrastructure.repository;
 
 
 import com.google.gson.GsonBuilder;
@@ -7,25 +7,25 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import hackathon.mms.app.infrastructure.graphql.DataModel;
-import hackathon.mms.app.model.DistrictOffice;
+import hackathon.mms.app.shared.model.DistrictOffice;
 import okhttp3.OkHttpClient;
-import retrofit2.Call;
-import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.GET;
 import rx.Observable;
+import rx.Scheduler;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by ewa on 28.11.2016.
  */
-public class DistrictOfficesRepository {
+public class GraphQLRepository {
 
     private final RepositoryService repositoryService;
 
 
-    public DistrictOfficesRepository() {
+    public GraphQLRepository() {
 
         OkHttpClient client = new OkHttpClient.Builder()
                 .readTimeout(60, TimeUnit.SECONDS)
@@ -48,10 +48,10 @@ public class DistrictOfficesRepository {
 
         String query = "query { offices {id name } }";
 
-        Observable<DataModel<List<DistrictOffice>>> observable = repositoryService.getDistrictOffices( query);
+        Observable<DataModel<DataModel<List<DistrictOffice>>>> observable = repositoryService.getDistrictOffices( query);
 
-    //    observable.
-        return observable.flatMap(dataModel -> Observable.from(dataModel.getData()));
+        //observable.flatMap(extModel -> Observable.from(extModel.getData()).getData())
+        return observable.flatMap(dataModel -> Observable.from(dataModel.getData().getData()));
     }
 
 }
