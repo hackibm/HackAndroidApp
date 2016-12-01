@@ -18,7 +18,7 @@ import rx.schedulers.Schedulers;
 public class DistrictOfficeListPresenterImpl implements DistrictOfficeListContract.DistrictOfficeListPresenter {
 
     private WeakReference<DistrictOfficeListView> districtOfficeListViewRef;
-    private List<DistrictOffice> districtOffices;
+    private final List<DistrictOffice> districtOffices;
 
     private GraphQLRepository repository;
 
@@ -37,9 +37,9 @@ public class DistrictOfficeListPresenterImpl implements DistrictOfficeListContra
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .toList()
-                .subscribe(districtOffices -> {
+                .subscribe(newList -> {
                             districtOffices.clear();
-                            districtOffices.addAll(districtOffices);
+                            districtOffices.addAll(newList);
                             if (districtOfficeListViewRef.get() != null)
                                 districtOfficeListViewRef.get().notifyDataChange();
 

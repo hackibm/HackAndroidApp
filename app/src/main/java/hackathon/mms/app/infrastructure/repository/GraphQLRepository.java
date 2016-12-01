@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import hackathon.mms.app.infrastructure.graphql.DataModel;
+import hackathon.mms.app.infrastructure.graphql.DataModelOffice;
 import hackathon.mms.app.shared.model.DistrictOffice;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -46,12 +47,11 @@ public class GraphQLRepository {
 
     public Observable<DistrictOffice> getDistrictOffices(){
 
-        String query = "query { offices {id name } }";
+        String query = " { districtOffices:offices {id name } }";
 
-        Observable<DataModel<DataModel<List<DistrictOffice>>>> observable = repositoryService.getDistrictOffices( query);
+        Observable<DataModel<DataModelOffice>> observable = repositoryService.getDistrictOffices( query);
 
-        //observable.flatMap(extModel -> Observable.from(extModel.getData()).getData())
-        return observable.flatMap(dataModel -> Observable.from(dataModel.getData().getData()));
+        return observable.flatMap(dataModel -> Observable.from(dataModel.getData().getDistrictOffices()));
     }
 
 }
