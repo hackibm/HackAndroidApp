@@ -3,7 +3,6 @@ package hackathon.mms.app.infrastructure.repository;
 
 import com.google.gson.GsonBuilder;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import hackathon.mms.app.infrastructure.graphql.DataModel;
@@ -14,9 +13,6 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Observable;
-import rx.Scheduler;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by ewa on 28.11.2016.
@@ -47,7 +43,7 @@ public class GraphQLRepository {
 
     public Observable<DistrictOffice> getDistrictOffices(){
 
-        String query = " { districtOffices:offices {id name } }";
+        String query = " { districtOffices:offices {id, name, contactInfo{address} } }";
 
         Observable<DataModel<DataModelOffice>> observable = repositoryService.getDistrictOffices( query);
 

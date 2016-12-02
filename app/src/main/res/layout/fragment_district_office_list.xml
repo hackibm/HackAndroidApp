@@ -10,4 +10,5 @@
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
     tools:context="hackathon.mms.app.domain.officeList.DistrictOfficeListFragment"
-    tools:listitem="@layout/fragment_district_office_item" />
+    tools:listitem="@layout/fragment_district_office_item"
+    android:clipToPadding="false" />
