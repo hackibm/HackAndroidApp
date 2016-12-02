@@ -36,6 +36,9 @@ public class DistrictOfficeRecyclerViewAdapter extends RecyclerView.Adapter<Dist
         holder.districtOffice = districtOffices.get(position);
         holder.mIdView.setText(districtOffices.get(position).getId());
         holder.mContentView.setText(districtOffices.get(position).getName());
+        holder.mAddresView.setText(districtOffices.get(position).getContactInfo().getAddress());
+
+
 
 
 
@@ -55,6 +58,7 @@ public class DistrictOfficeRecyclerViewAdapter extends RecyclerView.Adapter<Dist
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
+        public final TextView mAddresView;
         public DistrictOffice districtOffice;
 
         public ViewHolder(View view) {
@@ -62,6 +66,7 @@ public class DistrictOfficeRecyclerViewAdapter extends RecyclerView.Adapter<Dist
             mView = view;
             mIdView = (TextView) view.findViewById(R.id.id);
             mContentView = (TextView) view.findViewById(R.id.content);
+            mAddresView = (TextView) view.findViewById(R.id.address);
         }
 
         @Override
