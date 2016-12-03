@@ -7,10 +7,12 @@ package hackathon.mms.app.shared.model;
 public class ContactInfo {
     private String address;
     private String phone;
+    private String openingHours;
 
-    public ContactInfo(String address, String phone) {
+    public ContactInfo(String address, String phone, String openingHours) {
         this.address = address;
         this.phone = phone;
+        this.openingHours = openingHours;
     }
 
     public String getAddress() {
@@ -19,5 +21,9 @@ public class ContactInfo {
 
     public String getPhone() {
         return phone;
+    }
+
+    public String getOpeningHours() {
+        return openingHours;
     }
 }

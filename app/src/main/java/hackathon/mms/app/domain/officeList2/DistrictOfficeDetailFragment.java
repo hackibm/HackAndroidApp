@@ -14,6 +14,7 @@ import hackathon.mms.app.domain.officeList2.dummy.DummyContent;
 import hackathon.mms.app.R;
 import hackathon.mms.app.infrastructure.repository.GraphQLRepository;
 import hackathon.mms.app.shared.model.DistrictOffice;
+import hackathon.mms.app.shared.model.Group;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -91,8 +92,20 @@ public class DistrictOfficeDetailFragment extends Fragment {
                     Activity activity = this.getActivity();
                     CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
                     if (appBarLayout != null) {
-                        appBarLayout.setTitle(doff.getName());
-                        String udInfo = "Adres: " + doff.getContactInfo().getAddress();
+                        String sep = "_____________________________________\n";
+                        appBarLayout.setTitle(prepareUDName(doff.getName()));
+                        StringBuilder sb = new StringBuilder();
+                        sb.append("Adres: " + prepareAddress(doff.getContactInfo().getAddress())).append("\n");
+                        sb.append("Godziny otwarcia: 8-16 \n");
+                        sb.append(sep);
+                        for(Group g : doff.getGroups()){
+                            sb.append("Sprawa: " + g.getNazwaGroupy() +"\n" +
+                                     "Liczba oczekujących: " + g.getLiczbaKlwKolejce()+"\n"+
+                                      "Średni czas obsługi: " + g.getCzasObslugi()+" min \n");
+                            sb.append(sep);
+                        }
+                        String udInfo =  sb.toString();
+                        Log.i("District2" , "udInfo: " + udInfo);
                         ((TextView) rootView.findViewById(R.id.districtoffice_detail)).setText(udInfo);
                     }
                     mItem = doff;
@@ -106,4 +119,27 @@ public class DistrictOfficeDetailFragment extends Fragment {
 
         return rootView;
     }
+
+    private String prepareAddress(String address){
+        String result = address;
+        try {
+            String[] arr = address.split(",");
+            result = arr[0] + ", " + arr[1].split(" ")[1];
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    private String prepareUDName(String udName){
+        String result = udName;
+        try {
+            result =  "UD " + result.split(" ")[2];
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+
 }
