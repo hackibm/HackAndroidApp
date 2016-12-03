@@ -103,11 +103,9 @@ public class DistrictOfficeListActivity extends AppCompatActivity implements Dis
 
                     }
                     urzedyAdapter.notifyDataSetChanged();
-                    //recyclerView.
                 },
                 Throwable::printStackTrace);
 
-       // recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(districtOffices));
     }
 
     @Override

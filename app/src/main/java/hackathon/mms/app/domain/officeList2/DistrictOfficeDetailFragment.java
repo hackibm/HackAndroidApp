@@ -14,6 +14,9 @@ import hackathon.mms.app.domain.officeList2.dummy.DummyContent;
 import hackathon.mms.app.R;
 import hackathon.mms.app.infrastructure.repository.GraphQLRepository;
 import hackathon.mms.app.shared.model.DistrictOffice;
+import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * A fragment representing a single DistrictOffice detail screen.
@@ -33,6 +36,8 @@ public class DistrictOfficeDetailFragment extends Fragment {
      */
     private DistrictOffice mItem;
 
+    private String districtOfficeId;
+
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
@@ -48,17 +53,19 @@ public class DistrictOfficeDetailFragment extends Fragment {
             // Load the dummy content specified by the fragment
             // arguments. In a real-world scenario, use a Loader
             // to load content from a content provider.
+            String udId = getArguments().getString(ARG_ITEM_ID);
+            districtOfficeId = udId;
+            Log.i("District2" , "Setting districtOfficeId: " + districtOfficeId );
 
-            GraphQLRepository respository = new GraphQLRepository();
-            //repository.
 
-            mItem = new DistrictOffice(getArguments().getString(ARG_ITEM_ID), "Nazwaxxxx", null, null);//DummyContent.ITEM_MAP.get(getArguments().getString(ARG_ITEM_ID));
-            Log.i("ID--->", getArguments().getString(ARG_ITEM_ID));
-            Activity activity = this.getActivity();
-            CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
-            if (appBarLayout != null) {
-                appBarLayout.setTitle(mItem.getName());
-            }
+
+//            mItem = new DistrictOffice(udId, "Nazwaxxxx", null, null);//DummyContent.ITEM_MAP.get(getArguments().getString(ARG_ITEM_ID));
+//            Log.i("ID--->", getArguments().getString(ARG_ITEM_ID));
+//            Activity activity = this.getActivity();
+//            CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
+//            if (appBarLayout != null) {
+//                appBarLayout.setTitle(mItem.getName());
+//            }
         }
     }
 
@@ -67,10 +74,35 @@ public class DistrictOfficeDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.districtoffice_detail, container, false);
 
+
+        GraphQLRepository repo1 = new GraphQLRepository();
+        Log.i("District2" , "Get details for districtOfficeId: " + districtOfficeId );
+        Observable<DistrictOffice> observable = repo1.getDistrictOfficeByID(districtOfficeId);
+
+        // DistrictOfficeListActivity.SimpleItemRecyclerViewAdapter urzedyAdapter = new DistrictOfficeListActivity.SimpleItemRecyclerViewAdapter(districtOffices);
+        // recyclerView.setAdapter(urzedyAdapter);
+        //  Observable<DistrictOffice> observable = repo.getDistrictOffices();
+        observable
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread()).subscribe(
+                doff ->
+                {
+                    Log.i("District2" , "Office: " + doff.getId()+" "+doff.getName()+" "+doff.getContactInfo().getAddress());
+                    Activity activity = this.getActivity();
+                    CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
+                    if (appBarLayout != null) {
+                        appBarLayout.setTitle(doff.getName());
+                        String udInfo = "Adres: " + doff.getContactInfo().getAddress();
+                        ((TextView) rootView.findViewById(R.id.districtoffice_detail)).setText(udInfo);
+                    }
+                    mItem = doff;
+                },
+                Throwable::printStackTrace);
+
+
         // Show the dummy content as text in a TextView.
-        if (mItem != null) {
-            ((TextView) rootView.findViewById(R.id.districtoffice_detail)).setText(mItem.getName());
-        }
+      //  if (mItem != null) {
+      //  }
 
         return rootView;
     }
