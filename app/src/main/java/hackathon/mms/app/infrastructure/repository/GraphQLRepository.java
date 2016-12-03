@@ -3,6 +3,7 @@ package hackathon.mms.app.infrastructure.repository;
 
 import com.google.gson.GsonBuilder;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -10,13 +11,11 @@ import hackathon.mms.app.infrastructure.graphql.DataModel;
 import hackathon.mms.app.infrastructure.graphql.DataModelOffice;
 import hackathon.mms.app.shared.model.DistrictOffice;
 import okhttp3.OkHttpClient;
+import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Observable;
-import rx.Scheduler;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by ewa on 28.11.2016.
@@ -24,7 +23,7 @@ import rx.schedulers.Schedulers;
 public class GraphQLRepository {
 
     private final RepositoryService repositoryService;
-
+    private final RepositoryService2 repositoryService2;
 
     public GraphQLRepository() {
 
@@ -43,15 +42,48 @@ public class GraphQLRepository {
                 .build();
 
         this.repositoryService = retrofit.create(RepositoryService.class);
+        this.repositoryService2 = retrofit.create(RepositoryService2.class);
     }
 
     public Observable<DistrictOffice> getDistrictOffices(){
 
-        String query = " { districtOffices:offices {id name } }";
+        String query = " { districtOffices:offices {id, name, contactInfo{address,phone} } }";
 
         Observable<DataModel<DataModelOffice>> observable = repositoryService.getDistrictOffices( query);
 
         return observable.flatMap(dataModel -> Observable.from(dataModel.getData().getDistrictOffices()));
+    }
+
+
+    public Observable<DistrictOffice> getDistrictOfficeByID(String id){
+
+        String query = " { districtOffices:offices (id:\""+id+"\") {id, name, contactInfo{address, phone, email, openingHours}, "+
+                "   groups{ nazwaGrupy, liczbaKlwKolejce, czasObslugi, liczbaCzynnychStan } } }";
+
+        System.out.println("query: "+query);
+
+        Observable<DataModel<DataModelOffice>> observable = repositoryService.getDistrictOffices( query);
+
+        return observable.flatMap(dataModel -> Observable.from(dataModel.getData().getDistrictOffices()));
+    }
+
+    public List<DistrictOffice> getDistrictOfficesSynch(){
+
+        List<DistrictOffice> result = null;
+
+        String query = " { districtOffices:offices {id, name, contactInfo{address} } }";
+
+        Call<DataModel<DataModelOffice>> call = repositoryService2.getDistrictOffices(query);
+
+        try {
+            DataModel<DataModelOffice> resp = call.execute().body();
+            result = resp.getData().getDistrictOffices();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+
     }
 
 }

@@ -4,10 +4,10 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
-import hackathon.mms.app.shared.model.DistrictOffice;
-import hackathon.mms.app.shared.model.UserLocation;
 import hackathon.mms.app.domain.officeList.DistrictOfficeListContract.DistrictOfficeListView;
 import hackathon.mms.app.infrastructure.repository.GraphQLRepository;
+import hackathon.mms.app.shared.model.DistrictOffice;
+import hackathon.mms.app.shared.model.UserLocation;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -29,11 +29,14 @@ public class DistrictOfficeListPresenterImpl implements DistrictOfficeListContra
         this.repository = repository;
     }
 
-    @Override
+   @Override
     public List<DistrictOffice> getOfficeList(UserLocation userLocation) {
         Observable<DistrictOffice> observable = repository.getDistrictOffices();
+        //observable.forEach(doff -> districtOffices.add(doff));
+       //observable.onCompleted();
 
-        observable
+
+      observable
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .toList()
@@ -46,7 +49,22 @@ public class DistrictOfficeListPresenterImpl implements DistrictOfficeListContra
                         },
                         Throwable::printStackTrace
                 );
-
+        //System.out.println("111 " + observable.toList() +" size: " + observable.toList().count());
         return districtOffices;
+
     }
+
+    /*@Override
+    public List<DistrictOffice> getOfficeList(UserLocation userLocation) {
+
+        List<DistrictOffice> list = new ArrayList<DistrictOffice>();
+        DistrictOffice doff = new DistrictOffice("ID1", "UD Bielany");
+        DistrictOffice doff1 = new DistrictOffice("ID2", "UD Mokotow");
+        list.add(doff);
+        list.add(doff1);
+        districtOffices.clear();
+        districtOffices.addAll(list);
+        return districtOffices;
+    } */
 }
+
