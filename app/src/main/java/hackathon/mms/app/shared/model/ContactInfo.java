@@ -5,13 +5,19 @@ package hackathon.mms.app.shared.model;
  */
 
 public class ContactInfo {
-private String address;
+    private String address;
+    private String phone;
 
-    public ContactInfo(String address) {
+    public ContactInfo(String address, String phone) {
         this.address = address;
+        this.phone = phone;
     }
 
     public String getAddress() {
         return address;
+    }
+
+    public String getPhone() {
+        return phone;
     }
 }

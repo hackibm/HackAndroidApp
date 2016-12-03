@@ -43,11 +43,22 @@ public class GraphQLRepository {
 
     public Observable<DistrictOffice> getDistrictOffices(){
 
-        String query = " { districtOffices:offices {id, name, contactInfo{address} } }";
+        String query = " { districtOffices:offices {id, name, contactInfo{address,phone} } }";
 
         Observable<DataModel<DataModelOffice>> observable = repositoryService.getDistrictOffices( query);
 
         return observable.flatMap(dataModel -> Observable.from(dataModel.getData().getDistrictOffices()));
     }
 
+    public Observable<DistrictOffice> getDistrictOfficeByID(String id){
+
+        String query = " { districtOffices:offices (id:\""+id+"\") {id, name, contactInfo{address, phone, email, openingHours}, "+
+                "   groups{ nazwaGrupy, liczbaKlwKolejce, czasObslugi, liczbaCzynnychStan } } }";
+
+        System.out.println("query: "+query);
+
+        Observable<DataModel<DataModelOffice>> observable = repositoryService.getDistrictOffices( query);
+
+        return observable.flatMap(dataModel -> Observable.from(dataModel.getData().getDistrictOffices()));
+    }
 }

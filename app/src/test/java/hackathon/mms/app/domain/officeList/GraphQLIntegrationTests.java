@@ -14,7 +14,7 @@ import rx.Observable;
 public class GraphQLIntegrationTests {
 
     @Test
-    public void testAddressNotNull(){
+    public void testAddressNotNull() throws InterruptedException {
 
         GraphQLRepository repo = new GraphQLRepository();
         Observable<DistrictOffice> obs = repo.getDistrictOffices();
@@ -22,10 +22,29 @@ public class GraphQLIntegrationTests {
             obs.forEach(elem ->{
                 System.out.println(elem.getContactInfo().getAddress());
                 Assert.assertNotNull(elem.getContactInfo().getAddress());
+                Assert.assertNotNull(elem.getContactInfo().getPhone());
             }
             );
 
         }
     }
+
+    @Test
+    public void testDetailsNotNull(){
+
+        GraphQLRepository repo = new GraphQLRepository();
+        Observable<DistrictOffice> obs = repo.getDistrictOfficeByID("831ef31a-b2a3-4cbb-aaa5-cb90fe05ad8c");
+        for(int i = 0; i < 10; i++) {
+            obs.forEach(elem -> {
+                System.out.println(elem.getGroups().size());
+
+                System.out.println(elem.getGroups().get(0));
+                Assert.assertNotNull(elem.getGroups());
+                Assert.assertNotNull(elem.getGroups().get(0).getNazwaGroupy());
+            });
+
+        }
+    }
+
 
 }
