@@ -62,7 +62,7 @@ public class DistrictOfficeListUnitTest {
         presenter = new DistrictOfficeListPresenterImpl(fragment, repository);
         offices = new ArrayList<>();
         for(int i = 0; i<10; i++){
-            offices.add(new DistrictOffice("test", "TEST", null, null));
+            offices.add(new DistrictOffice("test", "TEST", null));
         }
         observable = Observable.from(offices);
 
@@ -79,7 +79,7 @@ public class DistrictOfficeListUnitTest {
         presenter = new DistrictOfficeListPresenterImpl(fragment, repository);
         offices = new ArrayList<>();
         for(int i = 0; i<10; i++){
-            offices.add(new DistrictOffice("test", "TEST", null, null));
+            offices.add(new DistrictOffice("test", "TEST", null));
         }
         observable = Observable.from(offices);
         when(repository.getDistrictOffices()).thenReturn(observable);

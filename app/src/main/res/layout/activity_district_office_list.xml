@@ -24,4 +24,11 @@
         android:text="@string/offices_list"
         />
 
+
+    <!--<FrameLayout-->
+        <!--android:id="@+id/districe_office_list_container"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:clickable="true"></FrameLayout>-->
+
 </LinearLayout>
