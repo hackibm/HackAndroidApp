@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="hackathon.mms.app.domain.officeList.DistrictOfficeListActivity">
+    tools:context="hackathon.mms.app.domain.officeList.DistrictOfficeMainActivity">
 
     <Button
         android:id="@+id/dictrict_office_list_cases_btn"
@@ -17,11 +17,11 @@
         android:layout_height="wrap_content"
         android:text="@string/cases"
         />
-
-    <FrameLayout
-        android:id="@+id/districe_office_list_container"
+    <Button
+        android:id="@+id/dictrict_office_list_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:clickable="true"></FrameLayout>
+        android:text="@string/offices_list"
+        />
 
 </LinearLayout>
