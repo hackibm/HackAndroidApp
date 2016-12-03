@@ -18,7 +18,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/cases"
-        android:layout_weight="0.16" />
+        android:layout_weight="0.16"
+        style="@style/Widget.AppCompat.Button.Colored"
+        />
 
     <ImageView
         android:layout_width="400dp"
@@ -32,7 +34,9 @@
         android:layout_height="wrap_content"
         android:text="@string/offices_list"
         android:layout_weight="0.18"
-        android:elevation="0dp" />
+        android:elevation="0dp"
+        style="@style/Widget.AppCompat.Button.Colored"
+        />
 
 
     <!--<FrameLayout-->
