@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">HackAndroidApp</string>
     <string name="cases">Załatw sprawę</string>
+    <string name="offices_list">Lista Urzędów</string>
+    <string name="title_districtoffice_list">DistrictOffices</string>
+    <string name="title_districtoffice_detail">DistrictOffice Detail</string>
 </resources>
