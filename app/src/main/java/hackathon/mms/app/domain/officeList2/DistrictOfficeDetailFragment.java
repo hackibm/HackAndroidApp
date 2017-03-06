@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import hackathon.mms.app.domain.officeList2.dummy.DummyContent;
 import hackathon.mms.app.R;
 import hackathon.mms.app.infrastructure.repository.GraphQLRepository;
 import hackathon.mms.app.shared.model.DistrictOffice;
@@ -96,7 +95,7 @@ public class DistrictOfficeDetailFragment extends Fragment {
                         appBarLayout.setTitle(prepareUDName(doff.getName()));
                         StringBuilder sb = new StringBuilder();
                         sb.append("Adres: " + prepareAddress(doff.getContactInfo().getAddress())).append("\n");
-                        sb.append("Godziny otwarcia: 8-16 \n");
+                        sb.append("Godziny otwarcia: 8-16 \n"); //ODHARDKOWOWAC
                         sb.append(sep);
                         for(Group g : doff.getGroups()){
                             sb.append("Sprawa: " + g.getNazwaGroupy() +"\n" +

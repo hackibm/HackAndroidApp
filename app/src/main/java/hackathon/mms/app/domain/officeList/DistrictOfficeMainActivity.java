@@ -8,10 +8,9 @@ import android.widget.Button;
 
 import hackathon.mms.app.R;
 import hackathon.mms.app.domain.officeList2.DistrictOfficeListActivity;
-import hackathon.mms.app.shared.model.DistrictOffice;
 
 public class DistrictOfficeMainActivity extends AppCompatActivity
-        implements DistrictOfficeListFragment.OnDistrictOfficeSelectedListener {
+         {
 
     Button buttonCase, buttonList;
 
@@ -39,10 +38,7 @@ public class DistrictOfficeMainActivity extends AppCompatActivity
 
 
 
-    @Override
-    public void onDistrictOfficeSelected(DistrictOffice districtOffice) {
 
-    }
 
 
 }

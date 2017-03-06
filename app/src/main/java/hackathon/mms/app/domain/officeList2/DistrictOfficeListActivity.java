@@ -6,11 +6,9 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,13 +19,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hackathon.mms.app.R;
-import hackathon.mms.app.domain.officeList.DistrictOfficeListFragment;
-import hackathon.mms.app.domain.officeList2.dummy.DummyContent;
 import hackathon.mms.app.infrastructure.repository.GraphQLRepository;
 import hackathon.mms.app.shared.model.DistrictOffice;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
 /**
@@ -38,7 +33,7 @@ import rx.schedulers.Schedulers;
  * item details. On tablets, the activity presents the list of items and
  * item details side-by-side using two vertical panes.
  */
-public class DistrictOfficeListActivity extends AppCompatActivity implements DistrictOfficeListFragment.OnDistrictOfficeSelectedListener{
+public class DistrictOfficeListActivity extends AppCompatActivity{
 
     /**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
@@ -99,7 +94,7 @@ public class DistrictOfficeListActivity extends AppCompatActivity implements Dis
                 .toList().subscribe(list ->
                 {   districtOffices.addAll(list);
                     for(DistrictOffice doff : districtOffices){
-                        Log.i("District2" , "Office: " + doff.getId()+" "+doff.getName());
+                        Log.i("District" , "Office: " + doff.getId()+" "+doff.getName());
 
                     }
                     urzedyAdapter.notifyDataSetChanged();
@@ -108,10 +103,6 @@ public class DistrictOfficeListActivity extends AppCompatActivity implements Dis
 
     }
 
-    @Override
-    public void onDistrictOfficeSelected(DistrictOffice districtOffice) {
-
-    }
 
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
