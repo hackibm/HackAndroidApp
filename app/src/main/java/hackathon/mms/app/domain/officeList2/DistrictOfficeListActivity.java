@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -51,14 +49,6 @@ public class DistrictOfficeListActivity extends AppCompatActivity{
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
 //        Fragment districtOfficeListFrag = DistrictOfficeListFragment.newInstance();
 //        getSupportFragmentManager()
@@ -80,11 +70,11 @@ public class DistrictOfficeListActivity extends AppCompatActivity{
             mTwoPane = true;
         }
     }
-
+///////////////////WAZNE//////////////////////////
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
 
         GraphQLRepository repo = new GraphQLRepository();
-       List<DistrictOffice> districtOffices = new ArrayList<DistrictOffice>();
+        List<DistrictOffice> districtOffices = new ArrayList<DistrictOffice>();
         SimpleItemRecyclerViewAdapter urzedyAdapter = new SimpleItemRecyclerViewAdapter(districtOffices);
         recyclerView.setAdapter(urzedyAdapter);
         Observable<DistrictOffice> observable = repo.getDistrictOffices();
