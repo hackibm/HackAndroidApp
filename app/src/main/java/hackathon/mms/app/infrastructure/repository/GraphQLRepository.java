@@ -42,7 +42,7 @@ public class GraphQLRepository {
 
     public Observable<DistrictOffice> getDistrictOffices(){
 
-        String query = " { districtOffices:offices {id, name, contactInfo{address,phone} } }";
+        String query = " { districtOffices:offices {id, name, contactInfo{address,phone,longitude,latitude} } }";
 
         Observable<DataModel<DataModelOffice>> observable = repositoryService.getDistrictOffices( query);
 

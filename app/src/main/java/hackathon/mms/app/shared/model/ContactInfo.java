@@ -8,11 +8,15 @@ public class ContactInfo {
     private String address;
     private String phone;
     private String openingHours;
+    private Double longitude;
+    private Double latitude;
 
-    public ContactInfo(String address, String phone, String openingHours) {
+    public ContactInfo(String address, String phone, String openingHours, Double longitude, Double latitude) {
         this.address = address;
         this.phone = phone;
         this.openingHours = openingHours;
+        this.longitude = longitude;
+        this.latitude = latitude;
     }
 
     public String getAddress() {
@@ -25,5 +29,13 @@ public class ContactInfo {
 
     public String getOpeningHours() {
         return openingHours;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public Double getLatitude() {
+        return latitude;
     }
 }
