@@ -8,8 +8,8 @@ import android.view.View;
 import android.widget.Button;
 
 import hackathon.mms.app.R;
+import hackathon.mms.app.domain.officeList2.DistrictOfficeCaseActivity;
 import hackathon.mms.app.domain.officeList2.DistrictOfficeListActivity;
-import hackathon.mms.app.domain.officeList2.DistrictOfficeMap;
 
 public class DistrictOfficeMainActivity extends AppCompatActivity
          {
@@ -24,7 +24,7 @@ public class DistrictOfficeMainActivity extends AppCompatActivity
         buttonCase.setOnClickListener(new View.OnClickListener() {
                                           @Override
                                           public void onClick(View v) {
-                                              Intent intent = new Intent(DistrictOfficeMainActivity.this, DistrictOfficeMap.class);
+                                              Intent intent = new Intent(DistrictOfficeMainActivity.this, DistrictOfficeCaseActivity.class);
                                               startActivity(intent);
                                           }
                                       });

@@ -41,8 +41,8 @@ public class DistrictOfficeMap extends FragmentActivity implements OnMapReadyCal
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        LatLng sydney = new LatLng(52.270173, 20.983283);
+        mMap.addMarker(new MarkerOptions().position(sydney).title("UD Żoliborz"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 }

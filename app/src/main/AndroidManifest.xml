@@ -59,7 +59,8 @@
 
         <activity
             android:name=".domain.officeList2.DistrictOfficeMap"
-            android:label="@string/title_activity_district_office_map"></activity>
+            android:label="@string/title_activity_district_office_map" />
+        <activity android:name=".domain.officeList2.DistrictOfficeCaseActivity"></activity>
     </application>
 
 </manifest>
