@@ -13,6 +13,13 @@
     android:weightSum="1">
 
     <Button
+        android:text="Gooogle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/GoogleMapBtn"
+        android:layout_weight="0.16" />
+
+    <Button
         android:id="@+id/dictrict_office_list_cases_btn"
         android:layout_marginTop="100dp"
         android:layout_width="match_parent"
