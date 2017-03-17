@@ -20,7 +20,6 @@ import rx.Observable;
 public class GraphQLRepository {
 
     private final RepositoryService repositoryService;
-//    private final RepositoryService2 repositoryService2;
 
     public GraphQLRepository() {
 
@@ -39,7 +38,6 @@ public class GraphQLRepository {
                 .build();
 
         this.repositoryService = retrofit.create(RepositoryService.class);
-//        this.repositoryService2 = retrofit.create(RepositoryService2.class);
     }
 
     public Observable<DistrictOffice> getDistrictOffices(){
@@ -64,23 +62,5 @@ public class GraphQLRepository {
         return observable.flatMap(dataModel -> Observable.from(dataModel.getData().getDistrictOffices()));
     }
 
-//    public List<DistrictOffice> getDistrictOfficesSynch(){
-//
-//        List<DistrictOffice> result = null;
-//
-//        String query = " { districtOffices:offices {id, name, contactInfo{address} } }";
-//
-//        Call<DataModel<DataModelOffice>> call = repositoryService2.getDistrictOffices(query);
-//
-//        try {
-//            DataModel<DataModelOffice> resp = call.execute().body();
-//            result = resp.getData().getDistrictOffices();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//        return result;
-//
-//    }
 
 }

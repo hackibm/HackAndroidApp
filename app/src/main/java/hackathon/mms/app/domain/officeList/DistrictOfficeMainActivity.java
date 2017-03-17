@@ -36,12 +36,6 @@ public class DistrictOfficeMainActivity extends AppCompatActivity
                 startActivity(intent);
             }
         });
-
-//        Fragment districtOfficeListFrag = DistrictOfficeListFragment.newInstance();
-//        getSupportFragmentManager()
-//                .beginTransaction()
-//                .add(R.id.districe_office_list_container, districtOfficeListFrag)
-//        .commit();
     }
 
 

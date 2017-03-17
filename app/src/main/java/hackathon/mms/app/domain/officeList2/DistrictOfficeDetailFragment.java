@@ -24,6 +24,8 @@ import rx.schedulers.Schedulers;
  * in two-pane mode (on tablets) or a {@link DistrictOfficeDetailActivity}
  * on handsets.
  */
+
+
 public class DistrictOfficeDetailFragment extends Fragment {
     /**
      * The fragment argument representing the item ID that this fragment
@@ -31,9 +33,6 @@ public class DistrictOfficeDetailFragment extends Fragment {
      */
     public static final String ARG_ITEM_ID = "item_id";
 
-    /**
-     * The dummy content this fragment is presenting.
-     */
     private DistrictOffice mItem;
 
     private String districtOfficeId;
@@ -50,22 +49,9 @@ public class DistrictOfficeDetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         if (getArguments().containsKey(ARG_ITEM_ID)) {
-            // Load the dummy content specified by the fragment
-            // arguments. In a real-world scenario, use a Loader
-            // to load content from a content provider.
             String udId = getArguments().getString(ARG_ITEM_ID);
             districtOfficeId = udId;
             Log.i("District2" , "Setting districtOfficeId: " + districtOfficeId );
-
-
-
-//            mItem = new DistrictOffice(udId, "Nazwaxxxx", null, null);//DummyContent.ITEM_MAP.get(getArguments().getString(ARG_ITEM_ID));
-//            Log.i("ID--->", getArguments().getString(ARG_ITEM_ID));
-//            Activity activity = this.getActivity();
-//            CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
-//            if (appBarLayout != null) {
-//                appBarLayout.setTitle(mItem.getName());
-//            }
         }
     }
 
@@ -79,9 +65,6 @@ public class DistrictOfficeDetailFragment extends Fragment {
         Log.i("District2" , "Get details for districtOfficeId: " + districtOfficeId );
         Observable<DistrictOffice> observable = repo1.getDistrictOfficeByID(districtOfficeId);
 
-        // DistrictOfficeListActivity.SimpleItemRecyclerViewAdapter urzedyAdapter = new DistrictOfficeListActivity.SimpleItemRecyclerViewAdapter(districtOffices);
-        // recyclerView.setAdapter(urzedyAdapter);
-        //  Observable<DistrictOffice> observable = repo.getDistrictOffices();
         observable
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).subscribe(
@@ -95,7 +78,6 @@ public class DistrictOfficeDetailFragment extends Fragment {
                         appBarLayout.setTitle(prepareUDName(doff.getName()));
                         StringBuilder sb = new StringBuilder();
                         sb.append("Adres: " + prepareAddress(doff.getContactInfo().getAddress())).append("\n");
-                        sb.append("Godziny otwarcia: 8-16 \n"); //ODHARDKOWOWAC
                         sb.append(sep);
                         for(Group g : doff.getGroups()){
                             sb.append("Sprawa: " + g.getNazwaGroupy() +"\n" +
@@ -110,11 +92,6 @@ public class DistrictOfficeDetailFragment extends Fragment {
                     mItem = doff;
                 },
                 Throwable::printStackTrace);
-
-
-        // Show the dummy content as text in a TextView.
-      //  if (mItem != null) {
-      //  }
 
         return rootView;
     }
