@@ -4,4 +4,5 @@
     <string name="offices_list">Lista Urzędów</string>
     <string name="title_districtoffice_list">Warszawskie urzędy</string>
     <string name="title_districtoffice_detail"></string>
+    <string name="title_activity_district_office_map">Map</string>
 </resources>

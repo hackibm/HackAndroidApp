@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import hackathon.mms.app.R;
 import hackathon.mms.app.domain.officeList2.DistrictOfficeListActivity;
+import hackathon.mms.app.domain.officeList2.DistrictOfficeMap;
 
 public class DistrictOfficeMainActivity extends AppCompatActivity
          {
@@ -18,7 +19,14 @@ public class DistrictOfficeMainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_district_office_list);
-
+        buttonCase = (Button) findViewById(R.id.GoogleMapBtn);
+        buttonCase.setOnClickListener(new View.OnClickListener() {
+                                          @Override
+                                          public void onClick(View v) {
+                                              Intent intent = new Intent(DistrictOfficeMainActivity.this, DistrictOfficeMap.class);
+                                              startActivity(intent);
+                                          }
+                                      });
         buttonList = (Button) findViewById(R.id.dictrict_office_list_btn) ;
 
         buttonList.setOnClickListener(new View.OnClickListener() {
