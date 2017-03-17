@@ -117,7 +117,9 @@ public class DistrictOfficeListActivity extends AppCompatActivity{
                         Context context = v.getContext();
                         Intent intent = new Intent(context, DistrictOfficeDetailActivity.class);
                         intent.putExtra(DistrictOfficeDetailFragment.ARG_ITEM_ID, holder.mItem.getId());
-
+                        intent.putExtra("Longitude", holder.mItem.getContactInfo().getLongitude());
+                        intent.putExtra("Latitude", holder.mItem.getContactInfo().getLatitude());
+                        intent.putExtra("officeName", holder.mItem.getName());
                         context.startActivity(intent);
                     }
                 }

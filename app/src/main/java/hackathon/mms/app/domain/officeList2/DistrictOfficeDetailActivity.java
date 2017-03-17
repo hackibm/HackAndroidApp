@@ -5,7 +5,10 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import hackathon.mms.app.R;
 
@@ -32,6 +35,26 @@ public class DistrictOfficeDetailActivity extends AppCompatActivity {
 //                        .setAction("Action", null).show();
 //            }
 //        });
+
+        Button buttonShowOnMap = (Button) findViewById(R.id.buttonShowOnMap);
+
+//            String udId = getArguments().getString(ARG_ITEM_ID);
+
+        System.out.println("----officeId (item_id):  " + getIntent().getExtras().get("item_id"));
+
+        buttonShowOnMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DistrictOfficeDetailActivity.this, DistrictOfficeMap.class);
+                intent.putExtra("Latitude", (Double) getIntent().getExtras().get("Latitude"));
+                intent.putExtra("Longitude", (Double) getIntent().getExtras().get("Longitude"));
+                intent.putExtra("officeName", (String) getIntent().getExtras().get("officeName"));
+                //intent.putA
+                startActivity(intent);
+            }
+        });
+
+
 
         // Show the Up button in the action bar.
         ActionBar actionBar = getSupportActionBar();
