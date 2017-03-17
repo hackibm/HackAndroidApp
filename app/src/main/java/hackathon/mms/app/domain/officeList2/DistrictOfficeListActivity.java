@@ -32,13 +32,11 @@ import rx.schedulers.Schedulers;
  * item details side-by-side using two vertical panes.
  */
 public class DistrictOfficeListActivity extends AppCompatActivity{
-
     /**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
      * device.
      */
     private boolean mTwoPane;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,15 +47,6 @@ public class DistrictOfficeListActivity extends AppCompatActivity{
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
 
-
-//        Fragment districtOfficeListFrag = DistrictOfficeListFragment.newInstance();
-//        getSupportFragmentManager()
-//                .beginTransaction()
-//                .add(R.id.districe_office_list_container, districtOfficeListFrag)
-//        .commit();
-
-
-
         View recyclerView = findViewById(R.id.districtoffice_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
@@ -65,14 +54,12 @@ public class DistrictOfficeListActivity extends AppCompatActivity{
         if (findViewById(R.id.districtoffice_detail_container) != null) {
             // The detail container view will be present only in the
             // large-screen layouts (res/values-w900dp).
-            // If this view is present, then the
-            // activity should be in two-pane mode.
+            // If this view is present, then the activity should be in two-pane mode.
             mTwoPane = true;
         }
     }
-///////////////////WAZNE//////////////////////////
-    private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
 
+    private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         GraphQLRepository repo = new GraphQLRepository();
         List<DistrictOffice> districtOffices = new ArrayList<DistrictOffice>();
         SimpleItemRecyclerViewAdapter urzedyAdapter = new SimpleItemRecyclerViewAdapter(districtOffices);
@@ -81,8 +68,8 @@ public class DistrictOfficeListActivity extends AppCompatActivity{
         observable
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .toList().subscribe(list ->
-                {   districtOffices.addAll(list);
+                .toList().subscribe(list -> {
+                    districtOffices.addAll(list);
                     for(DistrictOffice doff : districtOffices){
                         Log.i("District" , "Office: " + doff.getId()+" "+doff.getName());
 
@@ -90,7 +77,6 @@ public class DistrictOfficeListActivity extends AppCompatActivity{
                     urzedyAdapter.notifyDataSetChanged();
                 },
                 Throwable::printStackTrace);
-
     }
 
 
