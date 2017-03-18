@@ -8,6 +8,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,6 +67,31 @@ public class DistrictOfficeCaseActivity extends AppCompatActivity {
                     select_item = idListString.get(pos);
                     selectedCase =   caseList.get(pos);
 
+                    TableLayout ll = (TableLayout) findViewById(R.id.caseOfficesTable);
+
+                    //TableRow row=(TableRow)findViewById(R.id.caseOfficesRow);
+                    TableRow row= new TableRow(ll.getContext());
+//                    for (int i = 0; i <2; i++) {
+
+                      //  checkBox = new CheckBox(this);
+                        TextView tv = new TextView(row.getContext());
+                        tv.setText("selectedCase: " + selectedCase.getName());
+//                        addBtn = new ImageButton(this);
+//                        addBtn.setImageResource(R.drawable.add);
+//                        minusBtn = new ImageButton(this);
+//                        minusBtn.setImageResource(R.drawable.minus);
+//                        qty = new TextView(this);
+//                        checkBox.setText("hello");
+//                        qty.setText("10");
+//                        row.addView(checkBox);
+//                        row.addView(minusBtn);
+//                        row.addView(qty);
+//                        row.addView(addBtn);
+                        row.addView(tv);
+                        ll.addView(row);
+
+//                    }
+
                 }
 
 
@@ -83,6 +111,12 @@ public class DistrictOfficeCaseActivity extends AppCompatActivity {
             public void onClick(View v) {
                Log.i("1", select_item);
                 Log.i("1", selectedCase.getId()+" "+selectedCase.toString());
+                TableLayout table = (TableLayout) findViewById(R.id.caseOfficesTable);
+                for(int i =0 ; i < table.getChildCount(); i++) {
+                    TableRow row = (TableRow) table.getChildAt(i);
+                   // table.removeView(row);
+                    row.removeAllViews();
+                }
             }
         });
 
