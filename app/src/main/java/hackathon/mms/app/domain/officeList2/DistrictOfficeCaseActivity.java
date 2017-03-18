@@ -128,7 +128,7 @@ public class DistrictOfficeCaseActivity extends AppCompatActivity {
 
     private String prepareTextForOffice(DistrictOffice doff) {
         StringBuilder sb = new StringBuilder();
-        sb.append(doff.getName() + "\n");
+        sb.append(doff.getName() + " (godz. otwarcia: " + doff.getContactInfo().getOpeningHours()+")" + "\n");
         if (doff.getGroups().size() > 0) {
             sb.append("     Średni czas obsługi: " + doff.getGroups().get(0).getLiczbaKlwKolejce() + "\n");
             sb.append("     Łączny czas obsługi: " + doff.getGroups().get(0).getLacznyCzasObslugi() + "\n");

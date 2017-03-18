@@ -93,7 +93,8 @@ public class GraphQLRepository {
 
         String query = "query{" +
                 "districtOffices:offices {" +
-                "    name," +
+                "    name,"  +
+                " contactInfo{address, phone, email, openingHours}, " +
                 "    groups(case_id:\""+ caseId +"\")" +
                 "{" +
                 "      nazwaGrupy," +
