@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Witaj w aplikacji Stacz Kolejkowy!</string>
+    <string name="app_name">Stacz Kolejkowy</string>
     <string name="cases">Załatw sprawę</string>
     <string name="offices_list">Lista Urzędów</string>
     <string name="title_districtoffice_list">Warszawskie urzędy</string>
