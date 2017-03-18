@@ -12,25 +12,31 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/app_bar_height"
         android:fitsSystemWindows="true"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            >
 
             <Button
                 android:id="@+id/buttonShowOnMap"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_marginTop="20dp"
-                android:text="Pokaż na mapie" />
+                android:background="@drawable/googleicon"
+                android:layout_marginLeft="20dp" />
 
             <Button
                 android:id="@+id/buttonNavigate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginTop="20dp"
-                android:text="Nawiguj" />
+                android:text="Nawiguj"
+                android:textAlignment="textEnd"
+                android:layout_marginLeft="250dp"
+                />
 
         </LinearLayout>
 

@@ -1,7 +1,6 @@
 package hackathon.mms.app.domain.officeList;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -20,7 +19,7 @@ public class DistrictOfficeMainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_district_office_list);
-        buttonCase = (Button) findViewById(R.id.GoogleMapBtn);
+        buttonCase = (Button) findViewById(R.id.dictrict_office_list_cases_btn);
         buttonCase.setOnClickListener(new View.OnClickListener() {
                                           @Override
                                           public void onClick(View v) {
@@ -29,7 +28,7 @@ public class DistrictOfficeMainActivity extends AppCompatActivity
                                           }
                                       });
         buttonList = (Button) findViewById(R.id.dictrict_office_list_btn) ;
-        buttonCase = (Button) findViewById(R.id.dictrict_office_list_cases_btn) ;
+
 
         buttonList.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,14 +38,7 @@ public class DistrictOfficeMainActivity extends AppCompatActivity
             }
         });
 
-        buttonCase.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
-                        Uri.parse("http://maps.google.com/maps?saddr=52.1879919,20.9461545,15&daddr=52.2084261,20.944414,12"));
-                startActivity(intent);
-            }
-        });
+
     }
 
 

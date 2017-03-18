@@ -1,11 +1,11 @@
 package hackathon.mms.app.domain.officeList2;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -35,6 +35,16 @@ public class DistrictOfficeDetailActivity extends AppCompatActivity {
 //                        .setAction("Action", null).show();
 //            }
 //        });
+        Button buttonNavigation;
+        buttonNavigation = (Button) findViewById(R.id.buttonNavigate);
+        buttonNavigation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                        Uri.parse("http://maps.google.com/maps?saddr=52.1879919,20.9461545,15&daddr=52.2084261,20.944414,12"));
+                startActivity(intent);
+            }
+        });
 
         Button buttonShowOnMap = (Button) findViewById(R.id.buttonShowOnMap);
 
