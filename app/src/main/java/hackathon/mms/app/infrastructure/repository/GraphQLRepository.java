@@ -64,7 +64,7 @@ public class GraphQLRepository {
 
     public Observable<DistrictOffice> getDistrictOfficeCase(){
 
-        String query = "{districtOffices: cases{name}}";
+        String query = "{districtOffices: cases{name,id}}";
 
         System.out.println("query: "+query);
 

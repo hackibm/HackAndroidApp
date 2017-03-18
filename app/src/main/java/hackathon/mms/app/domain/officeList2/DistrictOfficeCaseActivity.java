@@ -33,10 +33,10 @@ public class DistrictOfficeCaseActivity extends AppCompatActivity {
 
         List<DistrictOffice> caseList = new ArrayList<>();
         List<String> caseListString = new ArrayList<>();
-
+        List<String> idListString = new ArrayList<>();
         Observable<DistrictOffice> caseListObs = repo.getDistrictOfficeCase();
 
-        Log.i("HEJ", "hej");
+
         System.out.print(caseListObs.toString());
 
         caseListObs
@@ -45,7 +45,7 @@ public class DistrictOfficeCaseActivity extends AppCompatActivity {
                 .toList().subscribe(list -> {
                         caseList.addAll(list);
                         for(DistrictOffice doff: caseList){
-
+                            idListString.add(doff.getId());
                             caseListString.add(doff.getName());
                         }
             Spinner spinner = (Spinner) findViewById(R.id.spinner2);
@@ -60,14 +60,14 @@ public class DistrictOfficeCaseActivity extends AppCompatActivity {
                                            int pos, long id) {
                     // An item was selected. You can retrieve the selected item using
 
-                    select_item = (String) parent.getItemAtPosition(pos);
-                    adapter.notifyDataSetChanged();
+                    select_item = idListString.get(pos);
+
                 }
 
 
                 @Override
                 public void onNothingSelected(AdapterView<?> arg0) {
-                    System.out.print("wowwiwpojohakjshfdjsadksahd");
+
                 }
 
 
