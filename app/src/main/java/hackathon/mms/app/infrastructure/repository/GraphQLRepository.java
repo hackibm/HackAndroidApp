@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 import hackathon.mms.app.infrastructure.graphql.DataModel;
 import hackathon.mms.app.infrastructure.graphql.DataModelOffice;
+import hackathon.mms.app.shared.model.CaseModel;
 import hackathon.mms.app.shared.model.DistrictOffice;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -20,6 +21,8 @@ import rx.Observable;
 public class GraphQLRepository {
 
     private final RepositoryService repositoryService;
+
+
 
     public GraphQLRepository() {
 
@@ -38,6 +41,7 @@ public class GraphQLRepository {
                 .build();
 
         this.repositoryService = retrofit.create(RepositoryService.class);
+
     }
 
     public Observable<DistrictOffice> getDistrictOffices(){
@@ -62,15 +66,15 @@ public class GraphQLRepository {
         return observable.flatMap(dataModel -> Observable.from(dataModel.getData().getDistrictOffices()));
     }
 
-    public Observable<DistrictOffice> getDistrictOfficeCase(){
+    public Observable<CaseModel> getDistrictOfficeCase(){
 
-        String query = "{districtOffices: cases{name,id}}";
+        String query = "{caseModel: cases{name,id}}";
 
         System.out.println("query: "+query);
 
         Observable<DataModel<DataModelOffice>> observable = repositoryService.getDistrictOffices( query);
 
-        return observable.flatMap(dataModel -> Observable.from(dataModel.getData().getDistrictOffices()));
+        return observable.flatMap(dataModel -> Observable.from(dataModel.getData().getCaseModel()));
     }
 
 }

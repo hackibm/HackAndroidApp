@@ -14,7 +14,7 @@ import java.util.List;
 
 import hackathon.mms.app.R;
 import hackathon.mms.app.infrastructure.repository.GraphQLRepository;
-import hackathon.mms.app.shared.model.DistrictOffice;
+import hackathon.mms.app.shared.model.CaseModel;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -22,7 +22,7 @@ import rx.schedulers.Schedulers;
 public class DistrictOfficeCaseActivity extends AppCompatActivity {
 
     String select_item = "nic tu nie ma";
-    DistrictOffice selectedCase;
+    CaseModel selectedCase;
     Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,25 +32,25 @@ public class DistrictOfficeCaseActivity extends AppCompatActivity {
 
         GraphQLRepository repo = new GraphQLRepository();
 
-        List<DistrictOffice> caseList = new ArrayList<>();
-        List<String> caseListString = new ArrayList<>();
-        List<String> idListString = new ArrayList<>();
-        Observable<DistrictOffice> caseListObs = repo.getDistrictOfficeCase();
+        List<CaseModel> caseList = new ArrayList<>();
+
+        Observable<CaseModel> caseListObs = repo.getDistrictOfficeCase();
 
 
-        System.out.print(caseListObs.toString());
+
 
         caseListObs
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .toList().subscribe(list -> {
+                        Log.i("list:", list.get(0).getName());
                         caseList.addAll(list);
-                        for(DistrictOffice doff: caseList){
-                            idListString.add(doff.getId());
-                            caseListString.add(doff.getName());
+                        for(CaseModel s: caseList){
+                            Log.i("1", s.getName());
                         }
+
             Spinner spinner = (Spinner) findViewById(R.id.spinner2);
-            ArrayAdapter<DistrictOffice> adapter = new ArrayAdapter<DistrictOffice>(this,android.R.layout.simple_spinner_item, caseList);
+            ArrayAdapter<CaseModel> adapter = new ArrayAdapter<CaseModel>(this,android.R.layout.simple_spinner_item, caseList);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinner.setAdapter(adapter);
 
@@ -61,8 +61,7 @@ public class DistrictOfficeCaseActivity extends AppCompatActivity {
                                            int pos, long id) {
                     // An item was selected. You can retrieve the selected item using
 
-                    select_item = idListString.get(pos);
-                    selectedCase =   caseList.get(pos);
+                    selectedCase = caseList.get(pos);
 
                 }
 
@@ -81,7 +80,6 @@ public class DistrictOfficeCaseActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               Log.i("1", select_item);
                 Log.i("1", selectedCase.getId()+" "+selectedCase.toString());
             }
         });
