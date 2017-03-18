@@ -22,6 +22,7 @@ import rx.schedulers.Schedulers;
 public class DistrictOfficeCaseActivity extends AppCompatActivity {
 
     String select_item = "nic tu nie ma";
+    DistrictOffice selectedCase;
     Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +50,7 @@ public class DistrictOfficeCaseActivity extends AppCompatActivity {
                             caseListString.add(doff.getName());
                         }
             Spinner spinner = (Spinner) findViewById(R.id.spinner2);
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, caseListString);
+            ArrayAdapter<DistrictOffice> adapter = new ArrayAdapter<DistrictOffice>(this,android.R.layout.simple_spinner_item, caseList);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinner.setAdapter(adapter);
 
@@ -61,6 +62,7 @@ public class DistrictOfficeCaseActivity extends AppCompatActivity {
                     // An item was selected. You can retrieve the selected item using
 
                     select_item = idListString.get(pos);
+                    selectedCase =   caseList.get(pos);
 
                 }
 
@@ -80,6 +82,7 @@ public class DistrictOfficeCaseActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                Log.i("1", select_item);
+                Log.i("1", selectedCase.getId()+" "+selectedCase.toString());
             }
         });
 

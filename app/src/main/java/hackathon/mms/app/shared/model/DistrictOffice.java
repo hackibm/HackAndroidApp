@@ -34,4 +34,8 @@ public class DistrictOffice {
         return groups;
     }
 
+    @Override
+    public String toString() {
+        return getName();
+    }
 }
