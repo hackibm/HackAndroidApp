@@ -5,19 +5,35 @@ package hackathon.mms.app.shared.model;
  */
 
 public class Group {
+    private String idGrupy;
     private String nazwaGrupy;
     private String liczbaKlwKolejce;
     private String czasObslugi;
     private String liczbaCzynnychStan;
+    private String lacznyCzasObslugi;
 
+   /* "nazwaGrupy": "A-DOWODY OSOBISTE",
+            "idGrupy": "1",
+            "czasObslugi": "0",
+            "liczbaCzynnychStan": "0",
+            "lacznyCzasObslugi": "0"
 
-
+    */
 
     public Group(String nazwaGroupy, String liczbaKlwKolejce,  String czasObslugi, String liczbaCzynnychStan) {
         this.nazwaGrupy = nazwaGroupy;
         this.liczbaKlwKolejce = liczbaKlwKolejce;
         this.czasObslugi = czasObslugi;
         this.liczbaCzynnychStan = liczbaCzynnychStan;
+    }
+
+    public Group(String nazwaGroupy, String idGrupy, String liczbaKlwKolejce,  String czasObslugi, String liczbaCzynnychStan, String lacznyCzasObslugi) {
+        this.idGrupy = idGrupy;
+        this.nazwaGrupy = nazwaGroupy;
+        this.liczbaKlwKolejce = liczbaKlwKolejce;
+        this.czasObslugi = czasObslugi;
+        this.liczbaCzynnychStan = liczbaCzynnychStan;
+        this.lacznyCzasObslugi = lacznyCzasObslugi;
     }
 
     public String getNazwaGroupy() {
@@ -34,6 +50,18 @@ public class Group {
 
     public String getLiczbaCzynnychStan() {
         return liczbaCzynnychStan;
+    }
+
+    public String getIdGrupy() {
+        return idGrupy;
+    }
+
+    public String getNazwaGrupy() {
+        return nazwaGrupy;
+    }
+
+    public String getLacznyCzasObslugi() {
+        return lacznyCzasObslugi;
     }
 
     @Override
