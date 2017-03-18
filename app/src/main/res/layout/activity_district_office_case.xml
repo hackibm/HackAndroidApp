@@ -16,7 +16,7 @@
         android:id="@+id/caseOfficesTable"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="200dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="9dp">
@@ -25,25 +25,13 @@
             android:id="@+id/caseOfficesRow"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-
     </TableLayout>
-
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="158dp"
         android:id="@+id/spinner2"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:text="Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="46dp"
-        android:id="@+id/tutaj"
-        android:layout_marginStart="12dp"
-        android:layout_below="@+id/spinner2"
         android:layout_alignParentStart="true" />
 
     <ImageView
@@ -53,6 +41,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/imageView2" />
+
 
 
 </RelativeLayout>
