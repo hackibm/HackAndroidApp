@@ -12,21 +12,6 @@
     tools:context="hackathon.mms.app.domain.officeList2.DistrictOfficeCaseActivity">
 
 
-    <TableLayout
-        android:id="@+id/caseOfficesTable"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="150dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="9dp">
-
-        <TableRow
-            android:id="@+id/caseOfficesRow"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </TableLayout>
-
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,6 +26,20 @@
         android:id="@+id/spinner2"
         android:layout_below="@+id/imageView2"
         android:layout_alignParentStart="true" />
+
+    <TableLayout
+        android:id="@+id/caseOfficesTable"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="130dp"
+        android:layout_height="match_parent">
+
+        <TableRow
+            android:id="@+id/caseOfficesRow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </TableLayout>
 
 
 </RelativeLayout>
