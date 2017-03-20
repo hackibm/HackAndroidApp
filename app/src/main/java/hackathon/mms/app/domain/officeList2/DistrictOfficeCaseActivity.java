@@ -76,7 +76,7 @@ public class DistrictOfficeCaseActivity extends AppCompatActivity {
 
                     clearTable();
                     System.out.println("XXXXXXX: " + "selectedCase: " + selectedCase.getName());
-                    Observable<DistrictOffice> caseListObs = repo.getOfficesForCase("identityCard");
+                    Observable<DistrictOffice> caseListObs = repo.getOfficesForCase(selectedCase.getId());
                     System.out.println("getOfficesForCase invoked");
                     caseListObs
                             .subscribeOn(Schedulers.io())
@@ -130,7 +130,7 @@ public class DistrictOfficeCaseActivity extends AppCompatActivity {
         StringBuilder sb = new StringBuilder();
         sb.append(doff.getName() + " (godz. otwarcia: " + doff.getContactInfo().getOpeningHours()+")" + "\n");
         if (doff.getGroups().size() > 0) {
-            sb.append("     Średni czas obsługi: " + doff.getGroups().get(0).getLiczbaKlwKolejce() + "\n");
+            sb.append("     Średni czas obsługi: " + doff.getGroups().get(0).getCzasObslugi() + "\n");
             sb.append("     Łączny czas obsługi: " + doff.getGroups().get(0).getLacznyCzasObslugi() + "\n");
             sb.append("     Liczba klientów w kolejce: " + doff.getGroups().get(0).getLiczbaKlwKolejce() + "\n");
         }
