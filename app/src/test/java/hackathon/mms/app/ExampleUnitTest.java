@@ -2,14 +2,16 @@ package hackathon.mms.app;
 
 import android.util.Log;
 
+import junit.framework.Assert;
+
 import org.junit.Test;
 
 
 
 import hackathon.mms.app.infrastructure.repository.GraphQLRepository;
 import hackathon.mms.app.shared.model.DistrictOffice;
+import hackathon.mms.app.shared.model.Group;
 import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 import static org.junit.Assert.*;
@@ -31,6 +33,13 @@ public class ExampleUnitTest {
         System.out.println(prepareAddress("ul. Grójecka 17 a, 02-021 Warszawa, Polska"));
     }
 
+    @Test
+    public void testParseServiceTime() {
+        Assert.assertEquals(71, Group.GroupComparatorByServiceTime.getServiceTime("01:11"));
+        Assert.assertEquals(11, Group.GroupComparatorByServiceTime.getServiceTime("11"));
+    }
+
+
     private String prepareAddress(String address) {
         String result = address;
         try {
@@ -41,6 +50,8 @@ public class ExampleUnitTest {
         }
         return result;
     }
+
+
 
    // @Test
 /*

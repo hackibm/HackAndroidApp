@@ -1,5 +1,6 @@
 package hackathon.mms.app.shared.model;
 
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -37,5 +38,19 @@ public class DistrictOffice {
     @Override
     public String toString() {
         return getName();
+    }
+
+    public static class DistrictComparatorByGroupServiceTime implements Comparator<DistrictOffice> {
+
+        @Override
+        public int compare(DistrictOffice d1, DistrictOffice d2) {
+            int result = -1;
+            if(d1!=null && d2!=null){
+                if(d1.getGroups()!=null && d1.getGroups().size()>0 && d2.getGroups()!=null && d2.getGroups().size()>0){
+                    return new Group.GroupComparatorByServiceTime().compare(d1.getGroups().get(0), d2.getGroups().get(0));
+                }
+            }
+            return result;
+        }
     }
 }

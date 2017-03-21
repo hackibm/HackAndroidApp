@@ -1,5 +1,9 @@
 package hackathon.mms.app.shared.model;
 
+import java.text.SimpleDateFormat;
+import java.util.Comparator;
+import java.util.Date;
+
 /**
  * Created by d4w1dk on 02/12/2016.
  */
@@ -72,5 +76,38 @@ public class Group {
                 ", czasObslugi='" + czasObslugi + '\'' +
                 ", liczbaCzynnychStan='" + liczbaCzynnychStan + '\'' +
                 '}';
+    }
+
+    public static class GroupComparatorByServiceTime implements Comparator<Group> {
+
+        private final static String TIME_FORMAT = "HH:mm";
+
+        @Override
+        public int compare(Group g1, Group g2) {
+            Integer i1 = getServiceTime(g1.getCzasObslugi());
+            Integer i2 = getServiceTime(g2.getCzasObslugi());
+            return i1.compareTo(i2);
+        }
+
+        public static int getServiceTime(String serviceTimeStr) {
+            int serviceTime = -1;
+            if (serviceTimeStr != null && !serviceTimeStr.equals("")) {
+                int index = serviceTimeStr.indexOf(':');
+                try {
+                    if (index != -1) {
+                            int hours = Integer.valueOf(serviceTimeStr.substring(0,index));
+                            int minutes = Integer.valueOf(serviceTimeStr.substring(index+1));
+                            serviceTime =  hours * 60 +  minutes;
+                    }else{
+                        serviceTime = Integer.valueOf(serviceTimeStr);
+                    }
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+            System.out.println("-------------------->serviceTimeStr: " + serviceTimeStr +" serviceTime: " + serviceTime);
+            return serviceTime;
+        }
+
     }
 }

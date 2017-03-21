@@ -13,6 +13,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import hackathon.mms.app.R;
@@ -117,6 +118,7 @@ public class DistrictOfficeCaseActivity extends AppCompatActivity {
 
     private void updateTable(List<DistrictOffice> districtOffices) {
         TableLayout ll = (TableLayout) findViewById(R.id.caseOfficesTable);
+        Collections.sort(districtOffices, new DistrictOffice.DistrictComparatorByGroupServiceTime());
         for (DistrictOffice doff : districtOffices) {
             TableRow row = new TableRow(ll.getContext());
             TextView tv = new TextView(row.getContext());
@@ -130,8 +132,8 @@ public class DistrictOfficeCaseActivity extends AppCompatActivity {
         StringBuilder sb = new StringBuilder();
         sb.append(doff.getName() + " (godz. otwarcia: " + doff.getContactInfo().getOpeningHours()+")" + "\n");
         if (doff.getGroups().size() > 0) {
+            sb.append("     Czas oczekiwania w kolejce: " + doff.getGroups().get(0).getLacznyCzasObslugi() + "\n");
             sb.append("     Średni czas obsługi: " + doff.getGroups().get(0).getCzasObslugi() + "\n");
-            sb.append("     Łączny czas obsługi: " + doff.getGroups().get(0).getLacznyCzasObslugi() + "\n");
             sb.append("     Liczba klientów w kolejce: " + doff.getGroups().get(0).getLiczbaKlwKolejce() + "\n");
         }
         return sb.toString();
