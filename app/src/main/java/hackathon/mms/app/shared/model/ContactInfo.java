@@ -10,17 +10,23 @@ public class ContactInfo {
     private String openingHours;
     private Double longitude;
     private Double latitude;
+    private String email;
 
-    public ContactInfo(String address, String phone, String openingHours, Double longitude, Double latitude) {
+    public ContactInfo(String address, String phone, String openingHours, Double longitude, Double latitude, String email) {
         this.address = address;
         this.phone = phone;
         this.openingHours = openingHours;
         this.longitude = longitude;
         this.latitude = latitude;
+        this.email = email;
     }
 
     public String getAddress() {
         return address;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public String getPhone() {

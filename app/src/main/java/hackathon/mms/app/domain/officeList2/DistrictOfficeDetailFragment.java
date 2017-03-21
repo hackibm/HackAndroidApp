@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
+import android.text.util.Linkify;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -57,6 +58,7 @@ public class DistrictOfficeDetailFragment extends Fragment {
         }
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -76,10 +78,12 @@ public class DistrictOfficeDetailFragment extends Fragment {
                     Activity activity = this.getActivity();
                     CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
                     if (appBarLayout != null) {
-                        String sep = "_____________________________________\n";
+                        String sep = "________________________________\n";
                         appBarLayout.setTitle(prepareUDName(doff.getName()));
                         StringBuilder sb = new StringBuilder();
                         sb.append("Adres: " + prepareAddress(doff.getContactInfo().getAddress())).append("\n");
+                        sb.append("Tel: "+ doff.getContactInfo().getPhone()+"\n");
+                        sb.append("email: "+ doff.getContactInfo().getEmail()+"\n");
                         sb.append(sep);
                         for(Group g : doff.getGroups()){
                             sb.append("Sprawa: " + g.getNazwaGroupy() +"\n" +
@@ -88,15 +92,19 @@ public class DistrictOfficeDetailFragment extends Fragment {
                             sb.append(sep);
                         }
                         String udInfo =  sb.toString();
+
+
                         Log.i("District2" , "udInfo: " + udInfo);
+
                         ((TextView) rootView.findViewById(R.id.districtoffice_detail)).setText(udInfo);
+
                     }
 
 
                     mItem = doff;
                 },
                 Throwable::printStackTrace);
-
+        Linkify.addLinks((TextView) rootView, Linkify.PHONE_NUMBERS);
         return rootView;
     }
 
@@ -120,6 +128,7 @@ public class DistrictOfficeDetailFragment extends Fragment {
         }
         return result;
     }
+
 
 
 }
